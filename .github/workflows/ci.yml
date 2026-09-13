@@ -1,0 +1,37 @@
+name: FitFlow CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  repository-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify project structure
+        run: |
+          test -d frontend
+          test -d backend
+          test -d ai-service
+          test -d docs
+          test -f README.md
+          test -f .gitignore
+          test -f docs/tech-stack.md
+          test -f docs/comparison-matrix.md
+          test -f docs/architecture.md
+
+      - name: Display repository information
+        run: |
+          echo "FitFlow repository structure verified successfully."
+          echo "Frontend: React Native / React Native Web"
+          echo "Backend: Node.js / Express"
+          echo "Database: PostgreSQL / Firebase"
+          echo "AI: TensorFlow Lite / Cloud AI"
