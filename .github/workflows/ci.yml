@@ -18,8 +18,8 @@ jobs:
 
       - name: Verify project structure
         run: |
-          test -d frontend
-          test -d backend
+          test -f frontend/.gitkeep
+          test -f backend/.gitkeep
           test -d ai-service
           test -d docs
           test -f README.md
